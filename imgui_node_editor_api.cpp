@@ -407,6 +407,17 @@ ImVec2 ax::NodeEditor::GetNodeSize(NodeId nodeId)
     return s_Editor->GetNodeSize(nodeId);
 }
 
+ImVec2 ax::NodeEditor::GetLinkPoints(LinkId id, bool is_m_Start)
+{
+    auto link = s_Editor->GetLink(id);
+    if (is_m_Start) {
+        return link->m_Start;
+    }
+    else {
+        return link->m_End;
+    }
+}
+
 void ax::NodeEditor::CenterNodeOnScreen(NodeId nodeId)
 {
     if (auto node = s_Editor->FindNode(nodeId))
